@@ -18,7 +18,7 @@ while(Flag):
     regex = re.compile('현재 입력하신 아이디가 등록되어 있지 않거나, 아이디 또는 비밀번호를 잘못 입력 하셨습니다.')
     
     if regex.findall(req.text):
-        print("아이디 비밀번호 오류!")
+        print("현재 입력하신 아이디가 등록되어 있지 않거나, 아이디 또는 비밀번호를 잘못 입력 하셨습니다.")
         ID,PASSWORD = sign_up()
     else:
         Flag = False
