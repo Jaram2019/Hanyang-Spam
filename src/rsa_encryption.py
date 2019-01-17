@@ -1,25 +1,19 @@
 import base64
 import math
-from Crypto.PublicKey import RSA
+import requests
+from jsbn import RSAKey
 
-global _public_key = ""
-global _public_key_nm = ""
-global _curtimecheck = 0
-global _token_req_cnt = 0
+def fnRSAEnc(inData,_public_key):
 
-def fnRSAEnc(inData):
-    if(_public_key == ""):
-        print("서버에 암호화를 위한 데이터요청중입니다. 잠시만 기다려주세요.")
-    
     base64Str = base64.b64encode(inData.encode('utf-8'))
-
     length = len(base64Str)
     splitcnt = math.ceil(length/50)
     enc_final = ""
 
-    key_pair = RSA.generate("010001")
-    _public_key = key_pair.publickey()
+    rsa = RSAKey()
+    rsa.setPublic(_public_key,'010001')
 
+    
     for i in range(splitcnt):
         pos = i * 50
         if i == splitcnt-1:
@@ -27,6 +21,21 @@ def fnRSAEnc(inData):
         else:
             end_pos = pos + 50
 
-        enc_final += _public_key.encrypt(base64Str[pos+1:end_pos])
+        enc_final += rsa.encrypt(base64Str[pos:end_pos].decode("utf-8"))
 
     return enc_final
+
+
+
+def login(id,password):
+    new_session = requests.Session()
+    new_req = new_session.get('https://m.hanyang.ac.kr/public_token.json?t=mobile')
+    _public_key_nm,_public_key=new_req.text.split("|")
+
+    return dict(
+        username=fnRSAEnc(id,_public_key),
+        password=fnRSAEnc(password,_public_key),
+        identck=_public_key_nm,
+        redirectUrl='',
+        autologin='N')
+
