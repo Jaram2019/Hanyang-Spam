@@ -26,10 +26,20 @@ while(Flag):
 
 session.get('https://m.hanyang.ac.kr/commonAjaxCall.json?apiUrl[]=/COMM/A201300050.json')
 session.headers['Content-Type']= 'application/x-www-form-urlencoded; charset=UTF-8'
-req = session.get('https://m.hanyang.ac.kr/commonAjaxCall.json?page=1&apiUrl=/COMM/A201300017.json')
 
 
-
-for i in req.json()['result']['list']:
-    print(i['MESSAGE'])
-
+list = []
+page_index = 1
+while (page_index>0):
+    req = session.get('https://m.hanyang.ac.kr/commonAjaxCall.json?page='+str(page_index)+'&apiUrl=/COMM/A201300017.json')
+    Q = 0
+    for i in req.json()['result']['list']:
+        print("Loding")
+        print(i['MESSAGE'])
+        print()
+        Q+=1
+    if (Q==0):
+        page_index = 0
+    else:
+        page_index += 1
+    
