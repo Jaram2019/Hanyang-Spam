@@ -354,4 +354,5 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/macos,python,windows,pycharm,pycharm+iml,pycharm+all
 
 #Ignore Id,Password data
-MyAccount.txt
+MyAccount
+MyMessage
