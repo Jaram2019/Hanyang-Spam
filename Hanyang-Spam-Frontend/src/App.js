@@ -21,22 +21,22 @@ class App extends Component {
     this.handleLogin=this.handleLogin.bind(this)
     this.handleToggle=this.handleToggle.bind(this)
   }
-  componentDidMount(){
-    this.setState({
-      loding:1
-    })
-    fetch("http://localhost:1234")
-      .then(res=>{
-        return res.json();
-      })
-      .then(json=>{
-        console.log(json)
-        this.setState({
-          contents: json,
-          loding:0
-        })
-      })
-  }
+  // componentDidMount(){
+  //   this.setState({
+  //     loding:1
+  //   })
+  //   fetch("http://localhost:1234")
+  //     .then(res=>{
+  //       return res.json();
+  //     })
+  //     .then(json=>{
+  //       console.log(json)
+  //       this.setState({
+  //         contents: json,
+  //         loding:0
+  //       })
+  //     })
+  // }
 
   handleId(e) {
     this.setState({ id: e.target.value });
