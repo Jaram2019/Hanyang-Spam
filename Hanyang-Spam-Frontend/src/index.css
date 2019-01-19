@@ -7,22 +7,30 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 .message{
   text-align: left;
-  padding:30px;
+  padding: 30px;
+}
+.msg_info{
+  padding-bottom: 6px;
+}
+.sender{
+  padding-left: 10px;
+  left: 0;
 }
 .p_num{
+  padding-left: 10px;
   width:40%;
   left: 0;
 }
 .when{
-  width:40%;
-  right:0;
+  padding-right: 10px;
+  float: right;
+  right: 0;
 }
 .login-btn{
   border: 1px solid;
