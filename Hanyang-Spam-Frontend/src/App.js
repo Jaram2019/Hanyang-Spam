@@ -14,7 +14,7 @@ class App extends Component {
       loaded: 0,
       hashed: "",
       contents: [],
-      toggle: {'홍보':true,'학사':true,'행정':true,'기타':true},
+      toggle: {'채용':true,'수강':true,'행정':true,'학사':true,'연구':true,'경조사':true,'입학':true,'경비지급알림':true,'홍보':true,'기타':true},
     };
     this.handleId=this.handleId.bind(this)
     this.handlePassword=this.handlePassword.bind(this)
@@ -78,6 +78,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <img className="img" src="/logo.png" alt="img"/>
       {this.state.isLogined===false?
         <div className="login">
           <input type="text" onChange={this.handleId}/>
@@ -85,14 +86,17 @@ class App extends Component {
           <span className="login-btn" onClick={this.handleLogin}>login</span>
         </div>:""}
         <div className="toggle">
-          {this.state.loding===1?<div className="loading" />:<><span className="toggle-btn" onClick={this.handleToggle}>홍보</span>
-          <span className="toggle-btn" onClick={this.handleToggle}>학사</span>
-          <span className="toggle-btn" onClick={this.handleToggle}>행정</span>
-          <span className="toggle-btn" onClick={this.handleToggle}>기타</span></>}
-
+          {this.state.loding===1?<div className="loading" />:
+          Object.keys(this.state.toggle).map((content,i)=>{
+            console.log(content)
+            return <span className={"toggle-btn "+(this.state.toggle[content]===true?"active":"")} onClick={this.handleToggle} key={i}>{content}</span>
+          })
+          }
         </div>
+        <div className="container">
         {this.state.contents.map((content,i) => {
           return (this.state.toggle[content['UPMU_GB_NM']]===true?<Msg when={content['SEND_DTTM']} p_num={content['SENDER_HP_NO']} id={content['ID']} filter={content['UPMU_GB_NM']} msg={content['MESSAGE']} key={i}/>:"")})}
+      </div>
       </div>
     );
   }
