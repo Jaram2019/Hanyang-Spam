@@ -5,7 +5,7 @@ Hanyang Spam Message Killer
 Description
 -----------
 
->이 저장소는 한양대 어플리케이션 메세지를 한번에 보여주는 저정소입니다.
+>이 저장소는 한양대 어플리케이션 메세지를 한번에 보여주는 저소입니다.
 
 
 Installation
