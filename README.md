@@ -1,6 +1,6 @@
 Hanyang-Spam V1.0.0
 ===============================
-Hanyang Spam Message Killer
+Hanyang Spam Message Killer - 2019 Jaram Winter Workshop
 
 Description
 -----------
