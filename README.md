@@ -7,6 +7,8 @@ Description
 
 >이 저장소는 한양대 어플리케이션 메세지를 한번에 보여주는 저장소입니다.
 
+이 저장소는 [여기](https://github.com/AnOldStory/Hanyang-Spam-Node)에서 Node.js로만 새롭게 제작될 예정입니다.
+
 
 Installation
 ------------
